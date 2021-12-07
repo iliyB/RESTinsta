@@ -1,0 +1,13 @@
+.idea
+*.zip
+*.rar
+*.pyc
+*.sqlite3
+
+venv/
+media/
+static/
+frontend/
+celerybeat-schedule
+celerybeat.pid
+docker/*

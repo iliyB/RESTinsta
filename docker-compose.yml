@@ -1,0 +1,71 @@
+version: '3'
+services:
+
+  insta-web:
+    restart: always
+    build: .
+    container_name: insta-web
+    command: bash -c "python manage.py runserver 0.0.0.0:8080"
+    volumes:
+      - .:/site
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgresql-insta
+
+  postgresql-insta:
+    image: postgres:12
+    container_name: db_insta
+    env_file: .env
+    volumes:
+      - db_insta:/var/lib/postgresql/data/pgdata
+    ports:
+      - "5434:5432"
+
+  celery-insta:
+    restart: unless-stopped
+    build: .
+    command: celery -A configs.celery worker -l info --loglevel=info --concurrency=1
+    container_name: celery_insta
+    volumes:
+      - .:/app
+    links:
+      - postgresql-insta
+    depends_on:
+      - insta-web
+      - postgresql-insta
+      - redis-insta
+
+  celery-beat-insta:
+    restart: unless-stopped
+    build: .
+    command: celery -A configs.celery beat -l info --loglevel=info
+    container_name: celery_beat_insta
+    volumes:
+      - .:/app
+    depends_on:
+      - insta-web
+      - postgresql-insta
+      - redis-insta
+
+  flower-insta:
+    build: .
+    env_file: .env
+    command: /bin/bash -c "sleep 6 && celery flower -A configs.celery --port=5555 --basic_auth=admin:admin --pidfile /tmp/celery.pid"
+    container_name: flower_insta
+    volumes:
+      - .:/app
+    ports:
+      - "5555:5555"
+    depends_on:
+      - postgresql-insta
+      - redis-insta
+
+  redis-insta:
+    image: "redis:alpine"
+    container_name: redis-insta
+    ports:
+      - "6379:6379"
+
+volumes:
+  db_insta:
