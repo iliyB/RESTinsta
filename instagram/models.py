@@ -192,11 +192,6 @@ class UserObject(models.Model):
     def __str__(self):
         return self.username
 
-    def delete(self, using=None, keep_parents=False):
-        if self.pic:
-            self.pic.storage.delete(self.pic.name)
-        super().delete()
-
     class Meta:
         verbose_name = 'Наблюдаемый аккаунт'
         verbose_name_plural = 'Наблюдаемые аккаунты'
