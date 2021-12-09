@@ -129,7 +129,7 @@ class InstagramClient():
         is_updated_set_true(username)
 
         info = self.get_info(username)
-        set_info_about_user(username, info, self._download_profile_pict(info.profile_pic_url_hd))
+        set_info_about_user(username, info)
         self.processing_resources_from_main_page(username)
         self.processing_resources_form_stories(username)
 

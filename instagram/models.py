@@ -171,10 +171,10 @@ class UserObject(models.Model):
         blank=True
     )
 
-    pic = models.ImageField(
-        upload_to="icon/",
+    pic = models.CharField(
+        max_length=500,
+        verbose_name="Хранит ссылку на иконку профиля пользователя",
         null=True,
-        verbose_name="Хранит иконку профиля пользователя",
         blank=True
     )
 

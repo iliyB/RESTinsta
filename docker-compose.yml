@@ -25,7 +25,7 @@ services:
   celery-insta:
     restart: unless-stopped
     build: .
-    command: celery -A configs.celery worker -l info --loglevel=info --concurrency=1
+    command: celery -A configs.celery worker -l info --loglevel=info --concurrency=1 --pidfile=
     container_name: celery_insta
     volumes:
       - .:/app
@@ -39,7 +39,7 @@ services:
   celery-beat-insta:
     restart: unless-stopped
     build: .
-    command: celery -A configs.celery beat -l info --loglevel=info
+    command: celery -A configs.celery beat -l info --loglevel=info --pidfile=
     container_name: celery_beat_insta
     volumes:
       - .:/app

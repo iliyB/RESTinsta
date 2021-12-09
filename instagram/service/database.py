@@ -17,7 +17,7 @@ def is_updated_set_true(username: str) -> None:
     user.is_updated = True
     user.save()
 
-def set_info_about_user(username: str, info, pic) -> None:
+def set_info_about_user(username: str, info) -> None:
     """Сохраняет основную информация об аккаунте Instagram"""
     user = UserObject.objects.get(username=username)
 
@@ -34,6 +34,9 @@ def set_info_about_user(username: str, info, pic) -> None:
     user.is_business = info.is_business
     user.business_category = info.business_category_name
     user.instagram_link = "https://www.instagram.com/" + username + "/"
-    if pic is not None:
-        user.pic.save(f"account_pic_{username}.jpg", ContentFile(pic), save=True)
+    user.pic = info.profile_pic_url_hd
+    # if pic is not None:
+    #     print(2324324324234234324324)
+    #     user.pic = ContentFile(pic, name=f"account_pic_{username}.jpg")
+        # user.pic.save(f"account_pic_{username}.jpg", ContentFile(bytes(pic)), save=True)
     user.save()
