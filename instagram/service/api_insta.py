@@ -231,7 +231,7 @@ class InstagramClient():
         """Возвращает все ресурсы с главной страницы пользователя с заданным username"""
 
         user_id = self.instagram.user_id_from_username(username)
-        medias = self.instagram.user_medias(user_id, amount=75)
+        medias = self.instagram.user_medias(user_id, amount=200)
 
         return medias
 
