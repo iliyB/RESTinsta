@@ -178,6 +178,13 @@ class UserObject(models.Model):
         blank=True
     )
 
+    file_pic = models.ImageField(
+        upload_to="pic/",
+        null=True,
+        blank=True,
+        verbose_name="Хранит иконку профиля пользователя"
+    )
+
     medias = models.JSONField(
         blank=True,
         default=dict(),

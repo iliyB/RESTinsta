@@ -16,7 +16,7 @@ class ListUserObjectSerializer(serializers.ModelSerializer):
                   'full_name', 'media_count',
                   'follower_count', 'following_count',
                   'instagram_link', 'pic', 'last_update',
-                  'is_business', 'is_updated')
+                  'is_business', 'is_updated', 'file_pic')
 
 
 class DetailUserObjectSerializer(serializers.ModelSerializer):
@@ -32,7 +32,7 @@ class ListUserObjectMediaSerializer(serializers.ModelSerializer):
                   'full_name', 'media_count',
                   'follower_count', 'following_count',
                   'instagram_link', 'pic', 'last_update',
-                  'is_updated', 'medias')
+                  'is_updated', 'medias', 'file_pic')
 
 
 class ListUserObjectStorySerializer(serializers.ModelSerializer):
@@ -42,4 +42,4 @@ class ListUserObjectStorySerializer(serializers.ModelSerializer):
                   'full_name', 'media_count',
                   'follower_count', 'following_count',
                   'instagram_link', 'pic', 'last_update',
-                  'is_updated', 'stories')
+                  'is_updated', 'stories', 'file_pic')

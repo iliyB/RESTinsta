@@ -129,7 +129,8 @@ class InstagramClient():
         is_updated_set_true(username)
 
         info = self.get_info(username)
-        set_info_about_user(username, info)
+        file_pic = self._download_profile_pict(info.profile_pic_url_hd)
+        set_info_about_user(username, info, file_pic)
         self.processing_resources_from_main_page(username)
         self.processing_resources_form_stories(username)
 
@@ -167,6 +168,7 @@ class InstagramClient():
             hashtags: [str] = self._get_hashtags_from_caption(media.caption_text)
             friends: [str] = self._get_media_friends(media)
             link: str = f"https://www.instagram.com/p/{media.code}/"
+            location: {} = self._get_media_location(media.pk)
 
             user.medias.update({
                 str(media.pk): {
@@ -177,7 +179,9 @@ class InstagramClient():
                     'link': link,
                     'objects': [],
                     'hashtags': hashtags,
-                    'friends': friends}
+                    'friends': friends,
+                    'location': location
+                }
             })
 
         user.save()
@@ -212,7 +216,8 @@ class InstagramClient():
                     'date': str(date_time),
                     'objects': [],
                     'hashtags': hashtags,
-                    'friends': friends}
+                    'friends': friends
+                }
             })
 
         user.save()
@@ -234,6 +239,13 @@ class InstagramClient():
         medias = self.instagram.user_medias(user_id, amount=200)
 
         return medias
+
+    @instagram_exception
+    def _get_media_location(self, media_code: int) -> {}:
+        """
+        Возвращает локацию с медиа
+        """
+        return self.media_info(media_code).dict().get('location')
 
     @staticmethod
     def _download_profile_pict(url_pic: str) -> Optional[bytes]:
