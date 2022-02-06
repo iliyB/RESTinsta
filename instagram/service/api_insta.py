@@ -245,7 +245,7 @@ class InstagramClient():
         """
         Возвращает локацию с медиа
         """
-        return self.media_info(media_code).dict().get('location')
+        return self.instagram.media_info(media_code).dict().get('location')
 
     @staticmethod
     def _download_profile_pict(url_pic: str) -> Optional[bytes]:
