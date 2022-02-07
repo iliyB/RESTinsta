@@ -154,7 +154,7 @@ class InstagramClient():
 
         medias: [] = self._get_medias(username)
 
-        for media in medias:
+        for index, media in enumerate(medias):
 
             if user.medias.get(str(media.pk)) is not None:
                 continue
@@ -168,7 +168,7 @@ class InstagramClient():
             hashtags: [str] = self._get_hashtags_from_caption(media.caption_text)
             friends: [str] = self._get_media_friends(media)
             link: str = f"https://www.instagram.com/p/{media.code}/"
-            location: {} = self._get_media_location(media.pk)
+            location: Optional[{}] = self._get_media_location(media.pk) if index < 25 else None
 
             user.medias.update({
                 str(media.pk): {
@@ -183,6 +183,7 @@ class InstagramClient():
                     'location': location
                 }
             })
+            user.save()
 
         user.save()
 
@@ -219,6 +220,7 @@ class InstagramClient():
                     'friends': friends
                 }
             })
+            user.save()
 
         user.save()
 
