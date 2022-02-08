@@ -3,10 +3,14 @@ const MANIFEST = 'flutter-app-manifest';
 const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 const RESOURCES = {
-  "assets/AssetManifest.json": "6c8163faf3169c10bbd5058541ff5721",
+  "assets/AssetManifest.json": "6f4f091a7b8075519c2346b8e9deb57c",
+"assets/assets/image/artemlysov777.jpg": "2b7713183e1390dba90598bafa483c34",
+"assets/assets/image/demonofgreed33.jpg": "a04d849cf591c2f980548b982f461401",
+"assets/assets/image/viradur.jpg": "6f6a593fc2f8af899f5599e9f39a5933",
+"assets/assets/image/vlsuinfo.jpg": "965bdc9465c8c9fb6ab56eb9eb96f8a6",
 "assets/FontManifest.json": "71a4a82de411f155107da3f8dac64ebd",
 "assets/fonts/MaterialIcons-Regular.otf": "4e6447691c9509f7acdbf8a931a85ca1",
-"assets/NOTICES": "cd01a1f610ca16f593dd07d50bee6f3e",
+"assets/NOTICES": "05d48cf7f6ddc4eed9b37dc4eb0f03b5",
 "assets/packages/cupertino_icons/assets/CupertinoIcons.ttf": "6d342eb68f170c97609e9da345464e5e",
 "assets/packages/flutter_math_fork/lib/katex_fonts/fonts/KaTeX_AMS-Regular.ttf": "657a5353a553777e270827bd1630e467",
 "assets/packages/flutter_math_fork/lib/katex_fonts/fonts/KaTeX_Caligraphic-Bold.ttf": "a9c8e437146ef63fcd6fae7cf65ca859",
@@ -35,9 +39,9 @@ const RESOURCES = {
 "icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
 "icons/Icon-maskable-192.png": "c457ef57daa1d16f64b27b786ec2ea3c",
 "icons/Icon-maskable-512.png": "301a7604d45b3e739efc881eb04896ea",
-"index.html": "c090b3d7738f3d2f05e75529440c527b",
-"/": "c090b3d7738f3d2f05e75529440c527b",
-"main.dart.js": "3c53cc596f1b41c8438700ee6cde6fc7",
+"index.html": "b74a5db5cc9155ae5a9d13f338dd757a",
+"/": "b74a5db5cc9155ae5a9d13f338dd757a",
+"main.dart.js": "7c858f2ae708fd32328cb151f1d2100f",
 "manifest.json": "5069c164182d70399d26a5bd17fcced2",
 "version.json": "5073475cd2f3848fe7abedd1f8798030"
 };
